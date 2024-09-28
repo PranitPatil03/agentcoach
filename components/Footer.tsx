@@ -81,7 +81,7 @@ export function Footer() {
                 href="#"
                 className="hover:text-blue-400 transition-colors"
               >
-                FAQ's
+                FAQ&apos;s  {/* Changed to use &apos; for apostrophe */}
               </a>
             </li>
             <li>
