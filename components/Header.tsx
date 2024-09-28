@@ -12,10 +12,6 @@ export function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
-  };
-
   return (
     <header
       className="py-4 px-6 flex justify-between items-center bg-white relative"
