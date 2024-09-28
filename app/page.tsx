@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 
 const TEXTS: string[] = [
   "General Advisor",
@@ -139,6 +138,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    console.log(currentIndex)
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 5000); // Change every 5 seconds
@@ -238,12 +238,12 @@ export default function Home() {
         <h2
           className="text-3xl font-bold text-center mb-8 text-white"
         >
-          Explore AgentCoach.ai's Expertise
+          Explore AgentCoach.ai&apos;s Expertise
         </h2>
         <p
           className="text-center text-gray-400 mb-12 max-w-3xl mx-auto"
         >
-          Scroll through example prompts to see how our AI delivers expert
+          Scroll through example prompts to see how our AI delivers expert  
           advice on real estate topics.
         </p>
         <div className="flex w-full flex-col gap-6">
@@ -382,7 +382,7 @@ export default function Home() {
             <Button
               className="bg-white text-blue-900 hover:bg-blue-100"
             >
-              SIGN UP FOR FREE & UNLOCK YOUR POTENTIAL TODAY!
+              SIGN UP FOR FREE &amp; UNLOCK YOUR POTENTIAL TODAY! {/* Fixed unescaped entity */}
             </Button>
           </div>
           <div className="md:w-1/2">
@@ -426,20 +426,17 @@ function ChatbotCard({ title, description, icon }: ChatbotCardProps) {
 
 type PromptCardProps = {
   readonly prompt: string;
-  readonly isHovered: boolean;
   readonly onMouseEnter: () => void;
   readonly onMouseLeave: () => void;
 }
 
-function PromptCard({ prompt, isHovered, onMouseEnter, onMouseLeave }: PromptCardProps) {
+function PromptCard({ prompt, onMouseEnter, onMouseLeave }: PromptCardProps) {
   return (
-    <div
-      role="button" // Added role for accessibility
+    <button
       tabIndex={0}  // Added tabIndex for keyboard navigation
       style={{ width: "300px", flexShrink: 0 }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onKeyPress={(e) => { if (e.key === 'Enter') onMouseEnter(); }} // Handle keyboard interaction
       className="bg-blue-900 text-white p-4 rounded-lg flex items-center justify-between transition-all duration-300"
     >
       <p className="text-sm">
@@ -448,7 +445,7 @@ function PromptCard({ prompt, isHovered, onMouseEnter, onMouseLeave }: PromptCar
       <span className="ml-2">
         →
       </span>
-    </div>
+    </button>
   );
 }
 
