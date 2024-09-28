@@ -75,51 +75,8 @@ export const navLinks = [
       question: "How can AI real estate coaching benefit me?",
     },
   ];
-  
-  import cardimg1 from "@/Assets/icons/nego.svg";
-  import cardimg2 from "@/Assets/icons/advisor.svg";
-  import cardimg3 from "@/Assets/icons/marketing.svg";
-  import cardimg4 from "@/Assets/icons/motivation.svg";
-  import cardimg5 from "@/Assets/icons/sales.svg";
-  
-  export const cardinfo = [
-    {
-      img: cardimg2,
-      title: "Sales Advisor",
-      key: "Sales",
-      description:
-        "Boost your property sales with expert tips and proven strategies tailored for real estate professionals.",
-    },
-    {
-      img: cardimg1,
-      title: "Negotiation Expert",
-      key: "Negotiation",
-      description:
-        "Master the art of negotiation with advice on closing deals, overcoming objections, and maximizing value.",
-    },
-    {
-      img: cardimg3,
-      title: "Marketing Guru",
-      key: "Marketing",
-      description:
-        "Elevate your marketing game with creative campaigns, branding insights, and social media strategies that attract clients.",
-    },
-    {
-      img: cardimg4,
-      title: "Motivation Guide",
-      key: "Motivation",
-      description:
-        "Stay inspired and focused with personalized tips, affirmations, and goal-setting strategies from the Motivation Mentor bot.",
-    },
-    {
-      img: cardimg5,
-      title: "General Advisor",
-      key: "General",
-      description:
-        "Get comprehensive advice on various aspects of real estate, from legalities to client management, tailored to your needs.",
-    },
-  ];
-  
+ 
+ 
   //faq questions
   
   export const faqData = [
@@ -155,14 +112,14 @@ export const navLinks = [
     },
   ];
   
-  import pp1 from "@/Assets/pp1.png";
-  import pp2 from "@/Assets/pp2.png";
-  import pp3 from "@/Assets/pp3.png"; // Assuming pp3.png exists
-  import pp4 from "@/Assets/pp4.png"; // Assuming pp4.png exists
-  import pp5 from "@/Assets/pp5.png"; // Assuming pp5.png exists
-  import pp6 from "@/Assets/pp6.png"; // Assuming pp6.png exists
-  import pp7 from "@/Assets/pp7.png"; // Assuming pp7.png exists
-  import icon12 from "@/Assets/icons/icon12.svg";
+  import pp1 from "@/app/Assets/pp1.png"
+  import pp2 from "@/app/Assets/pp2.png"; // Corrected path for pp2
+  import pp3 from "@/app/Assets/pp3.png"
+  import pp4 from "@/app/Assets/pp4.png"; // Assuming pp4.png exists
+  import pp5 from "@/app/Assets/pp5.png"; // Assuming pp5.png exists
+  import pp6 from "@/app/Assets/pp6.png"; // Assuming pp6.png exists
+  import pp7 from "@/app/Assets/pp7.png"; // Assuming pp7.png exists
+  import icon12 from "@/app/Assets/icons/icon12.svg";
   
   export const testimonials = [
     {

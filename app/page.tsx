@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import TestimonialSlider from "@/components/Test";
 
 const TEXTS: string[] = [
   "General Advisor",
@@ -27,13 +27,18 @@ const prompts: string[] = [
   "How can I improve my time management as a real estate agent?",
 ];
 
+interface OptionsType {
+  loop: boolean;
+  autoplay?: boolean; // Add this line to include autoplay
+  autoplayTimeout?: number; // Ensure this is also defined if used
+}
+
 export default function Home() {
   const scrollRef1 = useRef<HTMLDivElement | null>(null);
   const scrollRef2 = useRef<HTMLDivElement | null>(null);
   const scrollRef3 = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   console.log(hoveredIndex)
 
   const handleMouseEnter = useCallback((index: number) => {
@@ -320,33 +325,41 @@ export default function Home() {
       </div>
 
       <div className="bg-white py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-black">
+        {/* <h2 className="text-3xl font-bold text-center mb-8 text-black">
           What Users Say About Agent Coach.ai
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
           Hear from real estate professionals who have transformed their careers with our AI Coach.
-        </p>
+        </p> */}
         <div className="flex justify-center items-center overflow-hidden">
-          <div className="flex transition-transform duration-500">
+          {/* <div className="flex transition-transform duration-500">
             <Carousel
               opts={{
                 align: "start",
+                loop: true, // Enable looping
               }}
-              className="w-full" // Changed to full width
+              className="relative w-full" // Ensure the carousel is positioned correctly
             >
               <CarouselContent>
-                {testimonials.slice(0, 3).map((testimonial, index) => ( // Show only 3 testimonials
+                {testimonials.slice(0, 3).map((testimonial, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <div className="p-1">
-                      <TestimonialCard {...testimonial} /> {/* Render TestimonialCard */}
+                      <TestimonialCard {...testimonial} />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
+                <CarouselPrevious onClick={() => setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)} />
+              </div>
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                <CarouselNext onClick={() => setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)} />
+              </div>
             </Carousel>
-          </div>
+          </div> */}
+
+          <TestimonialSlider></TestimonialSlider>
+
         </div>
       </div>
 
@@ -354,12 +367,12 @@ export default function Home() {
         className="bg-blue-900 text-white py-16 px-4"
       >
         <h2
-          className="text-3xl font-bold text-center mb-8"
+          className="text-3xl font-bold text-center mb-4"
         >
           Start Transforming Your Real Estate Career Today - For Free!
         </h2>
         <p
-          className="text-center text-blue-200 mb-12 max-w-3xl mx-auto"
+          className="text-center text-blue-200 mb-10 max-w-4xl mx-auto"
         >
           Unlock expert AI-driven advice for real estate, sales,
           negotiation. Get started for free and elevate your career today!
@@ -385,11 +398,20 @@ export default function Home() {
             </Button>
           </div>
           <div className="md:w-1/2">
-            <img
+          <img
               src="https://picsum.photos/seed/agentcoach/600/400"
               alt="AgentCoach.ai Dashboard"
               className="rounded-lg shadow-lg"
             />
+
+          {/* <video
+            src=""
+            controls={false}
+            autoPlay
+            loop
+            muted
+            className="w-full object-cover h-auto"
+          /> */}
           </div>
         </div>
       </div>
