@@ -44,7 +44,7 @@ export function Header({ setCurrentPage }: { readonly setCurrentPage: (page: str
               onClick={() => setCurrentPage("faqs")}
               className="text-black hover:text-blue-500"
             >
-              FAQ's
+              FAQ&apos;s
             </button>
           </li>
           <li>

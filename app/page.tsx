@@ -465,7 +465,7 @@ function TestimonialCard({ name, role, quote, avatarUrl }: TestimonialCardProps)
         className="w-24 h-24 rounded-full border-4 border-white mb-4"
       />
       <p className="text-lg italic mb-2 text-center">
-        "{quote}"
+        &quot;{quote}&quot; {/* Fixed unescaped entity */}
       </p>
       <h3 className="font-bold text-lg">
         {name}

@@ -39,7 +39,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="/faq" className="hover:text-blue-400">
-                  FAQ's
+                  FAQ&apos;s
                 </a>
               </li>
             </ul>
