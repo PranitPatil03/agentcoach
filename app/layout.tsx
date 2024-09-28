@@ -23,24 +23,24 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
   setCurrentPage
-}: Readonly<{
+}: {
   children: React.ReactNode;
   setCurrentPage: (page: string) => void;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div
-      className="min-h-screen flex flex-col bg-black text-white"
-    >
-      <Header setCurrentPage={setCurrentPage}/>
-      <main className="flex-grow">
-        {children}
-      </main>
-      <Footer />
-    </div>
+          className="min-h-screen flex flex-col bg-black text-white"
+        >
+          <Header setCurrentPage={setCurrentPage}/>
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
