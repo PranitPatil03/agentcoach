@@ -264,7 +264,6 @@ export default function Home() {
               <PromptCard
                 key={index}
                 prompt={prompt}
-                isHovered={hoveredIndex === index}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               />
@@ -287,7 +286,6 @@ export default function Home() {
               <PromptCard
                 key={index}
                 prompt={prompt}
-                isHovered={hoveredIndex === index}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               />
@@ -310,7 +308,6 @@ export default function Home() {
               <PromptCard
                 key={index}
                 prompt={prompt}
-                isHovered={hoveredIndex === index}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               />
