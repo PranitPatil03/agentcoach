@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import TestimonialSlider from "@/components/Test";
+import TestimonialSlider from "@/components/TestimonialSlider"; // Updated import path
 
 const TEXTS: string[] = [
   "General Advisor",

@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<Testimonial> = ({ name, position, text, image })
                 className="w-24 h-24 rounded-full border-4 border-white"
             />
         </div>
-        <p className="testimonial-text">{text}</p> {/* Escaped quotes */}
+        <p className="testimonial-text">{text}</p>
         <h3 className="font-bold text-xl mb-1">
             {name}
         </h3>
