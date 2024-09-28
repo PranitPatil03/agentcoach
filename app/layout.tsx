@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-  readonly children: React.ReactNode;
-  readonly setCurrentPage: (page: string) => void;
+  children: React.ReactNode; // Removed readonly
+  setCurrentPage: (page: string) => void;
 }
 
 export default function RootLayout({
