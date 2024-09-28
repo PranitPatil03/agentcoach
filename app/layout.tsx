@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AgentCoach | Home",
-  description: "agent coach",
+  title: "AiCoach | Home",
+  description: "ai agent coach",
 };
 
 export default function RootLayout({
