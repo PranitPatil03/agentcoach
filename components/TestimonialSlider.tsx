@@ -26,7 +26,7 @@ const TestimonialCard: React.FC<Testimonial> = ({ name, position, text, image })
       />
     </div>
     <p className="text-lg italic mb-4 text-center h-24 overflow-hidden">
-      &quot;{text}&quot;  // Fixed unescaped entity
+      "{text}" 
     </p>
     <h3 className="font-bold text-xl mb-1">
       {name}

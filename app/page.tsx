@@ -27,12 +27,6 @@ const prompts: string[] = [
   "How can I improve my time management as a real estate agent?",
 ];
 
-interface OptionsType {
-  loop: boolean;
-  autoplay?: boolean; // Add this line to include autoplay
-  autoplayTimeout?: number; // Ensure this is also defined if used
-}
-
 export default function Home() {
   const scrollRef1 = useRef<HTMLDivElement | null>(null);
   const scrollRef2 = useRef<HTMLDivElement | null>(null);
@@ -467,33 +461,5 @@ function PromptCard({ prompt, onMouseEnter, onMouseLeave }: PromptCardProps) {
         →
       </span>
     </button>
-  );
-}
-
-interface TestimonialCardProps {
-  name: string;
-  role: string;
-  quote: string;
-  avatarUrl: string;
-}
-
-function TestimonialCard({ name, role, quote, avatarUrl }: TestimonialCardProps) {
-  return (
-    <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-16 rounded-lg shadow-lg flex flex-col items-center w-[350px] h-[350px] mx-4">
-      <img
-        src={avatarUrl}
-        alt={name}
-        className="w-24 h-24 rounded-full border-4 border-white mb-4"
-      />
-      <p className="text-lg italic mb-2 text-center">
-        &quot;{quote}&quot; {/* Fixed unescaped entity */}
-      </p>
-      <h3 className="font-bold text-lg">
-        {name}
-      </h3>
-      <p className="text-sm text-blue-200">
-        {role}
-      </p>
-    </div>
   );
 }
