@@ -34,6 +34,8 @@ export default function Home() {
   const [index, setIndex] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  console.log(hoveredIndex)
+
   const handleMouseEnter = useCallback((index: number) => {
     setHoveredIndex(index);
   }, []);
