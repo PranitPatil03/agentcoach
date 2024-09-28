@@ -6,7 +6,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 export function Footer() {
   return (
     <footer
-      className="bg-[#001D5B] text-white py-16 px-6"
+      className="bg-black text-white py-16 px-6"  // Changed background color to black
     >
       <div
         className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12"

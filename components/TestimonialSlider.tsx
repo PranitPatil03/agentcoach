@@ -5,28 +5,26 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { testimonials } from '@/lib/consts';
 
-// Update the Testimonial type to match the new structure
 type Testimonial = {
-  id: number; // Add id
-  image: string; // Add image
-  icon: string; // Add icon
-  text: string; // Change quote to text
+  id: number; 
+  image: string; 
+  icon: string; 
+  text: string; 
   name: string;
-  position: string; // Change role to position
+  position: string; 
 };
 
-// Update the TestimonialCard component to reflect the new properties
 const TestimonialCard: React.FC<Testimonial> = ({ name, position, text, image }) => (
   <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-8 rounded-lg shadow-lg flex flex-col items-center w-full h-full">
     <div className="relative mb-4">
       <img
-        src={image} // Use image instead of avatarUrl
+        src={image}
         alt={name}
         className="w-24 h-24 rounded-full border-4 border-white"
       />
     </div>
-    <p className="text-lg italic mb-4 text-center h-24 overflow-hidden">
-      &quot;{text}&quot; // Escape quotes
+    <p className="text-lg italic mb-4 text-center h-24 ">
+      {text}
     </p>
     <h3 className="font-bold text-xl mb-1">
       {name}
