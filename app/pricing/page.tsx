@@ -14,11 +14,11 @@ import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle2, Star } from "lucide-react";
 import { motion } from "framer-motion";
-// import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
-// const stripePromise = loadStripe(
-//   "pk_test_51OD7X2SGxfAbFy2L9HhqRfde5HzpY5pAb1LsDvgWMfNOyCjh9djhd8Me7TFODBFP7HArIWdBkDwNHvaHLpCxhsI300zZDZU0MO"
-// );
+const stripePromise = loadStripe(
+  "pk_test_51OD7X2SGxfAbFy2L9HhqRfde5HzpY5pAb1LsDvgWMfNOyCjh9djhd8Me7TFODBFP7HArIWdBkDwNHvaHLpCxhsI300zZDZU0MO"
+);
 
 interface Tier {
   name: string;
@@ -42,7 +42,7 @@ interface PricingCardProps {
   tier: Tier;
   originalPrice: string;
   price: string;
-  billingPeriod: "month" | "year";
+  billingPeriod: "monthly" | "annual";
   onSubscribe: (plan: string) => Promise<void>;
   isLoading: boolean;
   strikethrough?: boolean;
@@ -207,14 +207,59 @@ export default function PricingPage(): JSX.Element {
 
 
   const averageSavings = getAverageSavings(tiers);
-  const [isLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("monthly");
   console.log(billingPeriod)
 
   const handleSubscribe = async (plan: string): Promise<void> => {
-    // Use the plan parameter, e.g., log it or use it in a subscription call
-    console.log(plan); // {{ edit_1 }}
-    // ... (keep the existing handleSubscribe function)
+    if (plan === "free") {
+      alert("Please sign up for the free plan directly from the app.");
+      return;
+    }
+
+    if (plan === "enterprise") {
+      alert("Please contact us to subscribe to the Enterprise plan.");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_STRIPE_API_URL}/create-checkout-session`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            plan,
+            billingPeriod,
+            email: "kunalsalunkhe360@gmail.com",
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const { sessionId } = await response.json();
+      const stripe = await stripePromise;
+
+      if (stripe) {
+        const { error } = await stripe.redirectToCheckout({ sessionId });
+
+        if (error) {
+          console.error("Stripe redirect error:", error);
+        }
+      } else {
+        console.error("Stripe not loaded");
+      }
+    } catch (error) {
+      console.error("Error during subscription:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -274,8 +319,8 @@ export default function PricingPage(): JSX.Element {
                       tier={tier}
                       originalPrice={tier.monthlyPrice.original}
                       price={tier.monthlyPrice.discounted}
-                      billingPeriod="month"
-                      onSubscribe={handleSubscribe}
+                      billingPeriod="monthly"
+                      onSubscribe={() => handleSubscribe(tier.plan)} // Updated to use an arrow function
                       isLoading={isLoading}
                       strikethrough={tier.monthlyPrice.strikethrough}
                     />
@@ -296,8 +341,8 @@ export default function PricingPage(): JSX.Element {
                       tier={tier}
                       originalPrice={tier.annualPrice.original}
                       price={tier.annualPrice.discounted}
-                      billingPeriod="year"
-                      onSubscribe={handleSubscribe}
+                      billingPeriod="annual"
+                      onSubscribe={() => handleSubscribe(tier.plan)} // Updated to use an arrow function
                       isLoading={isLoading}
                       strikethrough={tier.annualPrice.strikethrough}
                     />

@@ -40,7 +40,7 @@ export function Header() {
         <ul
           className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 p-4 md:p-0"
         >
-          {["home", "about", "pricing", "faqs", "blog"].map((page) => (
+          {["home", "pricing", "faqs", "blog"].map((page) => (
             <li key={page}>
               <Link
                 href={page === "home" ? "/" : `/${page}`} // Updated for home page

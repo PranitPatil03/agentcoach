@@ -36,7 +36,7 @@ export default function FAQ() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white py-16 px-4">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
         <h1 className="text-4xl font-bold text-center mb-12 text-blue-800">
           Frequently Asked Questions
         </h1>

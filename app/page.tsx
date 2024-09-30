@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import TestimonialSlider from "@/components/TestimonialSlider"; // Updated import path
 import axios from "axios";
+import { Loader2 } from "lucide-react";
 
 const TEXTS: string[] = [
   "General Advisor",
@@ -148,13 +149,15 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const [title1, setTitle1] = useState<string>("  ");
-  const [title2, setTitle2] = useState<string>("With Cutting-Edge Generative");
-  const [subtitle, setSubtitle] = useState<string>("AI Coaching");
+  const [title1, setTitle1] = useState<string>("");
+  const [title2, setTitle2] = useState<string>("");
+  const [subtitle, setSubtitle] = useState<string>("");
   const [rotatingTexts, setRotatingTexts] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // Added loading state
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true before fetching
       try {
         const response = await axios.get("https://admindashbord-lumio.onrender.com/get-landing-page");
         const { title, subtitle, rotatingTexts } = response.data;
@@ -169,6 +172,8 @@ export default function Home() {
         setRotatingTexts(rotatingTexts);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
     fetchData();
@@ -189,32 +194,40 @@ export default function Home() {
 
   return (
     <div className="bg-black text-white">
-      <div
-        className="flex flex-col items-center justify-center min-h-screen text-center px-4"
-      >
-        <p className="text-base md:text-xl mb-6 text-gray-400">
-          Introducing AI-Powered Coaching for Real Estate Agents
-        </p>
-        <h1
-          className="text-2xl md:text-5xl lg:text-7xl font-bold mb-8 text-white"
+
+
+      {loading ? ( // Conditional rendering for loader
+        <div className="flex justify-center items-center h-screen">
+          <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
+        </div>
+      ) : (
+        <div
+          className="flex flex-col items-center justify-center min-h-screen text-center px-4"
         >
-          {title1}
-          <br />
-          {title2}
-          <br />
-          <span className="text-blue-400">
-            {rotatingTexts.filter(text => text).length > 0 ? rotatingTexts.filter(text => text)[index] : "..."}{" "}
-            <span className="text-white">
-              {subtitle}
+          <p className="text-base md:text-xl mb-6 text-gray-400">
+            Introducing AI-Powered Coaching for Real Estate Agents
+          </p>
+          <h1
+            className="text-2xl md:text-5xl lg:text-7xl font-bold mb-8 text-white"
+          >
+            {title1}
+            <br />
+            {title2}
+            <br />
+            <span className="text-blue-400">
+              {rotatingTexts.filter(text => text).length > 0 ? rotatingTexts.filter(text => text)[index] : "..."}{" "}
+              <span className="text-white">
+                {subtitle}
+              </span>
             </span>
-          </span>
-        </h1>
-        <Button
-          className="bg-blue-600 hover:bg-blue-700 text-white text-xl py-6 px-8"
-        >
-          GET STARTED FREE!
-        </Button>
-      </div>
+          </h1>
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 text-white text-xl py-6 px-8"
+          >
+            GET STARTED FREE!
+          </Button>
+        </div>
+      )}
 
       <div
         className="py-16 px-4 bg-white text-black"
