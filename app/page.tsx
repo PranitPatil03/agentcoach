@@ -47,7 +47,7 @@ export default function Home() {
   useEffect(() => {
     const intervalId = setInterval(
       () => setIndex((index) => (index + 1) % TEXTS.length),
-      3000, // every 3 seconds
+      3000,
     );
     return () => clearInterval(intervalId);
   }, []);
@@ -148,9 +148,9 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const [title1, setTitle1] = useState<string>("");
-  const [title2, setTitle2] = useState<string>("");
-  const [subtitle, setSubtitle] = useState<string>("");
+  const [title1, setTitle1] = useState<string>("  ");
+  const [title2, setTitle2] = useState<string>("With Cutting-Edge Generative");
+  const [subtitle, setSubtitle] = useState<string>("AI Coaching");
   const [rotatingTexts, setRotatingTexts] = useState<string[]>([]);
 
   useEffect(() => {
@@ -160,6 +160,7 @@ export default function Home() {
         const { title, subtitle, rotatingTexts } = response.data;
 
         const titleWords = title.split(" ");
+        console.log("Line 163", rotatingTexts)
         const midpoint = Math.ceil(titleWords.length / 1.7);
         setTitle1(titleWords.slice(0, midpoint).join(" "));
         setTitle2(titleWords.slice(midpoint).join(" "));
@@ -175,8 +176,13 @@ export default function Home() {
 
   useEffect(() => {
     const rotateText = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % rotatingTexts.length);
-    }, 3000); // Change text every 3 seconds
+      const filteredTexts = rotatingTexts.filter(text =>
+        console.log("Line 180", text)
+      );
+      if (filteredTexts.length > 0) {
+        setIndex((prevIndex) => (prevIndex + 1) % filteredTexts.length);
+      }
+    }, 3000);
 
     return () => clearInterval(rotateText);
   }, [rotatingTexts]);
@@ -197,7 +203,7 @@ export default function Home() {
           {title2}
           <br />
           <span className="text-blue-400">
-            {rotatingTexts[index]}{" "} {/* Use fetched rotating text */}
+            {rotatingTexts.filter(text => text).length > 0 ? rotatingTexts.filter(text => text)[index] : "..."}{" "}
             <span className="text-white">
               {subtitle}
             </span>
@@ -392,7 +398,7 @@ export default function Home() {
       </div>
 
       <div
-        className="bg-blue-900 text-white py-16 px-4"
+        className="py-16 px-4"
       >
         <h2
           className="text-3xl font-bold text-center mb-4"
@@ -400,36 +406,42 @@ export default function Home() {
           Start Transforming Your Real Estate Career Today - For Free!
         </h2>
         <p
-          className="text-center text-blue-200 mb-10 max-w-4xl mx-auto"
+          className="text-center mb-10 max-w-4xl mx-auto"
         >
           Unlock expert AI-driven advice for real estate, sales,
           negotiation. Get started for free and elevate your career today!
         </p>
         <div
-          className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-5xl mx-auto"
+          className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto"
         >
           <div className="md:w-1/2 flex flex-col justify-center">
-            <p className="text-blue-200 mb-4 text-justify">
+            <p className="mb-4 text-justify">
               Get instant access to AgentCoach.ai and start experiencing expert
               advice tailored just for you in Real Estate, Sales, Negotiation,
               Marketing, and Motivation.
             </p>
-            <p className="text-blue-200 mb-4 text-justify">
+            <p className="mb-4 text-justify">
               Best of all, you can get started right now, completely free! Take
               advantage of this opportunity to boost your career and see the
               difference AI-powered coaching can make.
             </p>
-            <p
+            {/* <p
               className="text-base text-white p-2 rounded-lg border text-center"
             >
               SIGN UP FOR FREE &amp; UNLOCK YOUR POTENTIAL TODAY!
-            </p>
+            </p> */}
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 text-white text-xl py-6 px-8 w-1/2 mt-5"
+            >
+              SIGN UP FOR FREE
+
+            </Button>
           </div>
           <div className="md:w-1/2">
             <img
               src="https://picsum.photos/seed/agentcoach/600/400"
               alt="AgentCoach.ai Dashboard"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg border"
             />
 
             {/* <video
@@ -456,7 +468,7 @@ type ChatbotCardProps = {
 function ChatbotCard({ title, description, icon }: ChatbotCardProps) {
   return (
     <div
-      className="bg-blue-900 text-white p-6 rounded-lg"
+      className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 rounded-lg"
     >
       <div
         className="text-4xl mb-4 bg-blue-600 w-16 h-16 flex items-center justify-center rounded-full mx-auto"
@@ -486,7 +498,7 @@ function PromptCard({ prompt, onMouseEnter, onMouseLeave }: PromptCardProps) {
       style={{ width: "300px", flexShrink: 0 }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="bg-blue-900 text-white p-4 rounded-lg flex items-center justify-between transition-all duration-300"
+      className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-4 rounded-lg flex items-center justify-between transition-all duration-300"
     >
       <p className="text-sm">
         {prompt}

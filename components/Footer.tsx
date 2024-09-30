@@ -2,11 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
   return (
     <footer
-      className="bg-black text-white py-16 px-6"  // Changed background color to black
+      className="bg-white text-black py-16 px-6"  // Changed background color to white and text color to black
     >
       <div
         className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12"
@@ -15,35 +16,35 @@ export function Footer() {
           <h3 className="text-2xl font-bold">
             AGENTCOACH.AI
           </h3>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm text-gray-500">
             Empowering real estate professionals with AI-driven coaching and
             insights.
           </p>
           <div className="flex space-x-4">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="hover:text-blue-400 transition-colors"
             >
               <Facebook size={20} />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/"
               className="hover:text-blue-400 transition-colors"
             >
               <Twitter size={20} />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/"
               className="hover:text-blue-400 transition-colors"
             >
               <Instagram size={20} />
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/"
               className="hover:text-blue-400 transition-colors"
             >
               <Linkedin size={20} />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -53,44 +54,44 @@ export function Footer() {
           </h4>
           <ul className="space-y-2">
             <li>
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="hover:text-blue-400 transition-colors"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/about"
                 className="hover:text-blue-400 transition-colors"
               >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/pricing"
                 className="hover:text-blue-400 transition-colors"
               >
                 Pricing
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/faqs"
                 className="hover:text-blue-400 transition-colors"
               >
                 FAQ&apos;s  {/* Changed to use &apos; for apostrophe */}
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/blog"
                 className="hover:text-blue-400 transition-colors"
               >
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -123,7 +124,7 @@ export function Footer() {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="bg-white/10 border-white/20 text-white placeholder-gray-400"
+              className="bg-white/10 border-white/20 text-white placeholder-gray-400 border-black-2 shadow-sm outline-none"
             />
 
             <Button
