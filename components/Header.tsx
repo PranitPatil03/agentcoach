@@ -51,34 +51,42 @@ export function Header() {
             </li>
           ))}
           <li className="md:hidden">
-            <Button
-              variant="ghost"
-              className="text-black hover:text-blue-500 w-full text-left"
-            >
-              Log In
-            </Button>
+            <Link href="https://blessed-perch-83.accounts.dev/sign-in">
+              <Button
+                variant="ghost"
+                className="text-black hover:text-blue-500 w-full text-left"
+              >
+                Log In
+              </Button>
+            </Link>
           </li>
           <li className="md:hidden">
-            <Button
-              className="bg-blue-600 hover:bg-blue-700 text-white w-full"
-            >
-              Sign Up
-            </Button>
+            <Link href="https://blessed-perch-83.accounts.dev/sign-in">
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+              >
+                Sign Up
+              </Button>
+            </Link>
           </li>
         </ul>
       </nav>
       <div className="hidden md:flex space-x-4">
-        <Button
-          variant="ghost"
-          className="text-black hover:text-blue-500"
-        >
-          Log In
-        </Button>
-        <Button
-          className="bg-blue-600 hover:bg-blue-700 text-white"
-        >
-          Sign Up
-        </Button>
+        <Link href="https://blessed-perch-83.accounts.dev/sign-in">
+          <Button
+            variant="ghost"
+            className="text-black hover:text-blue-500"
+          >
+            Log In
+          </Button>
+        </Link>
+        <Link href="https://blessed-perch-83.accounts.dev/sign-in">
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            Sign Up
+          </Button>
+        </Link>
       </div>
     </header>
   );
