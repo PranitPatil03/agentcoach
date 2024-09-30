@@ -16,9 +16,9 @@ import { CheckCircle2, Star } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import { motion } from "framer-motion";
 
-const stripePromise = loadStripe(
-  "pk_test_51OD7X2SGxfAbFy2L9HhqRfde5HzpY5pAb1LsDvgWMfNOyCjh9djhd8Me7TFODBFP7HArIWdBkDwNHvaHLpCxhsI300zZDZU0MO"
-);
+// const stripePromise = loadStripe(
+//   "pk_test_51OD7X2SGxfAbFy2L9HhqRfde5HzpY5pAb1LsDvgWMfNOyCjh9djhd8Me7TFODBFP7HArIWdBkDwNHvaHLpCxhsI300zZDZU0MO"
+// );
 
 interface Tier {
   name: string;
@@ -207,8 +207,9 @@ export default function PricingPage(): JSX.Element {
 
 
   const averageSavings = getAverageSavings(tiers);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading] = useState<boolean>(false);
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("monthly");
+  console.log(billingPeriod)
 
   const handleSubscribe = async (plan: string): Promise<void> => {
     // ... (keep the existing handleSubscribe function)
