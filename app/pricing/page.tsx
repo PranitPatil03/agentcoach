@@ -13,8 +13,8 @@ import {
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle2, Star } from "lucide-react";
-import { loadStripe } from "@stripe/stripe-js";
 import { motion } from "framer-motion";
+// import { loadStripe } from "@stripe/stripe-js";
 
 // const stripePromise = loadStripe(
 //   "pk_test_51OD7X2SGxfAbFy2L9HhqRfde5HzpY5pAb1LsDvgWMfNOyCjh9djhd8Me7TFODBFP7HArIWdBkDwNHvaHLpCxhsI300zZDZU0MO"
@@ -212,6 +212,8 @@ export default function PricingPage(): JSX.Element {
   console.log(billingPeriod)
 
   const handleSubscribe = async (plan: string): Promise<void> => {
+    // Use the plan parameter, e.g., log it or use it in a subscription call
+    console.log(plan); // {{ edit_1 }}
     // ... (keep the existing handleSubscribe function)
   };
 
